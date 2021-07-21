@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The core configuration file for the framework is the default (struts.xml) file
+and should reside on the classpath of the webapp (generally /WEB-INF/classes). -->
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <!-- devMode equals debug information and reload everything for every request -->
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.ui.theme" value="simple" />
+
+    <package name="Primes" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <!-- all exceptions not caught by the application will lead to error.jsp -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error" />
+        </global-exception-mappings>
+
+        <!-- 'index' action leads to the view provided by index.jsp -->
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+
+        <action name="login" class="hey.action.LoginAction" method="execute">
+            <result name="success">/Menu.jsp</result>
+            <result name="error">/erroLogin.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="register" class="hey.action.RegisterAction" method="execute">
+            <result name="success">/index.jsp</result>
+            <result name="error">/erroRegisto.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="criarEleicao" class="hey.action.CriarEleicaoAction" method="execute">
+            <result name="success">/Menu.jsp</result>
+            <result name="error">/erroCriarEleicao.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="listarEleicoes" class="hey.action.ListarEleicoesAction" method="execute">
+            <result name="success">/listarEleicoes.jsp</result>
+            <result name="error">/erroNaoExistemEleicoesNaoComecadas.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="consultarDetalhesEleicao" class="hey.action.ConsultarDetalhesEleicaoAction" method="execute">
+            <result name="success">/alterarPropriedadesEleicao.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="alterarPropriedadesEleicao" class="hey.action.AlterarPropriedadesEleicao" method="execute">
+            <result name="success">/alterarPropriedadesEleicao.jsp</result>
+            <result name="error">/erroNaoExistemEleicoesNaoComecadas.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="listarEleicoesConcluidas" class="hey.action.ListarEleicoesConcluidasAction" method="execute">
+            <result name="success">/listarEleicoesConcluidas.jsp</result>
+            <result name="error">/erroNaoExistemEleicoesConcluidas.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+
+        <action name="consultarDetalhesEleicoesPassadas" class="hey.action.ConsultarDetalhesEleicoesPassadasAction" method="execute">
+            <result name="success">/consultarDetalhesEleicoesPassadas.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="passaLista" class="hey.action.PassaListaAction" method="execute">
+            <result name="success">/addCandidato.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="listarEleicoesNaoComecadas" class="hey.action.ListarEleicoesNaoComecadasAction" method="execute">
+            <result name="success">/listarEleicoesNaoComecadas.jsp</result>
+            <result name="error">/erroSemEleicoesNaoComecadas.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="addElemento" class="hey.action.AddElementoAction" method="execute">
+            <result name="success">/addCandidato.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="addLista" class="hey.action.AddListaAction" method="execute">
+            <result name="success">/Menu.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="passaIndex" class="hey.action.PassaIndexAction" method="execute">
+            <result name="success">/adicionarMesaDeVoto.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="adicionarMesaDeVoto" class="hey.action.AdicionarMesaDeVotoAction" method="execute">
+            <result name="success">/adicionarMesaDeVoto.jsp</result>
+            <result name="error">/erroMesaDeVoto.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="listarEleicoesMesaDeVoto" class="hey.action.ListarEleicoesMesaDeVotoAction" method="execute">
+            <result name="success">/listarEleicoesMesaDeVoto.jsp</result>
+            <result name="error">/erroMesaDeVoto.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="passaEleicao" class="hey.action.PassarEleicaoAction" method="execute">
+            <result name="success">/addLista.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="localVotoEleitor" class="hey.action.LocalVotoEleitorAction" method="execute">
+            <result name="success">/localVotoEleitor.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="eleitores" class="hey.action.Eleitores" method="execute">
+            <result name="success">/eleitores.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="listaListasEleicao" class="hey.action.ListarListaEleicoesAction" method="execute">
+            <result name="success">/listaListasEleicao.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="listarEleicoesAtuais" class="hey.action.ListarEleicoesAtuaisAction" method="execute">
+            <result name="success">/listarEleicoesAtuais.jsp</result>
+            <result name="error">/erroVotar.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="votar" class="hey.action.votarAction" method="execute">
+            <result name="success">/Menu.jsp</result>
+            <result name="error">/erroVotar.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="logout" class="hey.action.LogoutAction" method="execute">
+            <result name="success">/index.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="input">/erroLogin.jsp</result>
+        </action>
+
+        <action name="conectaFacebook" class="facebook.conectarFBAction" method="execute">
+            <result name = "success">/Menu.jsp</result>
+            <result name = "login">/registar.jsp</result>
+        </action>
+
+        <action name="passaURL" class="hey.action.PassaURLAction" method="execute">
+            <result name = "success">/login.jsp</result>
+        </action>
+
+        <action name="partilhaEleicao" method="execute">
+            <result name = "success">/listarEleicoesAtuais.jsp</result>
+        </action>
+    </package>
+
+</struts>
